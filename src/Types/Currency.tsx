@@ -1,0 +1,1 @@
+export default type CurrencyType = 'USD' | 'EUR' | 'CHF';
