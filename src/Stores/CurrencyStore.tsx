@@ -2,6 +2,7 @@ import Dispatcher from "../Dispatcher/Dispatcher";
 import {Event} from "typescript.events";
 import IStore from './Interfaces/IStore';
 import CurrencyType from '../Types/Currency';
+import CurrencyAction from '../Types/CurrencyAction';
 
 type CurrencyKeyValueStorage = {
   'USD': number;
@@ -25,19 +26,30 @@ class CurrencyStoreImpl extends Event implements IStore {
     getLastState (key: CurrencyType) : CurrencyType {
         return this.store[key];
     }
+    setValue(key: CurrencyType, value: number) : void {
+        this.store[key] = value;
+        this.emmitChange();
+    }
 }
 
 let CurrencyStore = new CurrencyStoreImpl();
 
-/*Dispatcher.register((param: CurrencyType) =>  {
-  switch (param.actionType) {
-    case ActionTypes.ID_BASE:
-      _baseIdStore.push(param.data);
-      store.emitChange();
+interface CurrencyParam {
+    type: CurrencyType;
+    value: number;
+    action: CurrencyAction;
+}
+
+
+Dispatcher.register((param: CurrencyParam) =>  {
+  switch (param.action) {
+    case "DEPOSIT":
+    case "WITHDRAWAL":
+      CurrencyStore.setValue(param.type, param.value);
       break;
     default:
       break;
   }
-});*/
+});
 
 export CurrencyStore;
