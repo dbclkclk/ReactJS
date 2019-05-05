@@ -1,9 +1,9 @@
 import CurrencyType from '../../Types/Currency';
+import {Listener} from "typescript.events";
 
 export default interface IStore {
-        addChangeListener (callback: Function) : void;
-        removeChangeListener(callback: Function): void;
+        addChangeListener (callback: Listener) : void;
+        removeChangeListener(callback: Listener): void;
         emitChange () : void;
-        getLastState (key: CurrencyType) : number;
 
 }

@@ -5,12 +5,12 @@ import CurrencyType from '../Types/Currency';
 import CurrencyAction from '../Types/CurrencyAction';
 
 interface CurrencyKeyValueStorage {
-  [index:string]: number;
+  currency: CurrencyType;
 };
 
-class CurrencyStoreImpl extends Event implements IStore {
+class DefaultCurrencyStore extends Event implements IStore {
 
-    private store : CurrencyKeyValueStorage =  {USD: 0, CHF: 0, EUR: 0};
+    private store : CurrencyKeyValueStorage = {currency: null};
 
     addChangeListener (callback: Listener) : void {
         this.on("change", callback);
@@ -21,41 +21,31 @@ class CurrencyStoreImpl extends Event implements IStore {
     emitChange () : void {
         this.emit("change");
     }
-    getLastState (key: CurrencyType) : number {
-        let result : number;
-        if (key !== null)
-        {
-            result = this.store[key.toString()];
-        } else {
-            result = 0;
-        }
-        return result;
-
+    getLastState () : CurrencyType {
+        return this.store.currency;
     }
-    setValue(key: CurrencyType, value: number) : void {
-        this.store[key.toString()] = value;
+    setValue(key: CurrencyType) : void {
+        this.store.currency = key;
         this.emitChange();
     }
 }
 
-let CurrencyStore = new CurrencyStoreImpl();
+let defaultCurrencyStore = new DefaultCurrencyStore();
 
 interface CurrencyParam {
     type: CurrencyType;
-    value: number;
     action: CurrencyAction;
 }
 
 
 Dispatcher.register((param: CurrencyParam) =>  {
   switch (param.action) {
-    case "DEPOSIT":
-    case "WITHDRAWAL":
-      CurrencyStore.setValue(param.type, param.value);
+    case "CHANGE":
+      defaultCurrencyStore.setValue(param.type);
       break;
     default:
       break;
   }
 });
 
-export default CurrencyStore;
+export default defaultCurrencyStore;

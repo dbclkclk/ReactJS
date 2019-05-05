@@ -1,1 +1,3 @@
-export default type CurrencyType = 'USD' | 'EUR' | 'CHF';
+type CurrencyType = "USD" | "EUR" | "CHF"
+
+export default CurrencyType;

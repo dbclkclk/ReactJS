@@ -1,18 +1,16 @@
 import * as React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import {Container, Row, Col} from 'reactstrap';
 import Navigation from './Nav';
 import DefaultPage from './Pages/DefaultPage';
 import DepositPage from './Pages/DepositPage';
 import TransferPage from './Pages/TransferPage';
-import {
-  HashRouter as Router,
-  Route
-} from  "react-router-dom";
+import {HashRouter, Route} from  'react-router-dom';
 
 function App() {
+  debugger;
   return (
    <Container>
-        <Router>
+        <HashRouter>
           <Row>
             <Col><Navigation /></Col>
           </Row>
@@ -23,7 +21,7 @@ function App() {
                 <Route path="/deposit" component={DepositPage} />
             </Col>
           </Row>
-        </Router>
+        </HashRouter>
     </Container>
   );
 }

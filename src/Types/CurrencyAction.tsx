@@ -1,1 +1,3 @@
-export default type CurrencyType = 'DEPOSIT' | 'WITHDRAWAL';
+type CurrencyAction = "DEPOSIT" | "WITHDRAWAL" | "CHANGE";
+
+export default CurrencyAction;

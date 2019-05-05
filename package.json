@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/.bin/http-server -c-1 .",
+    "jest": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -15,11 +17,22 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.2",
     "@types/reactstrap": "^8.0.1",
+    "bootstrap": "^4.3.1",
+    "flux": "^3.1.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "reactstrap": "^8.0.0",
     "typescript.events": "^7.9.0"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^5.2.1",
+    "@types/jest": "^24.0.12",
+    "@types/node": "^12.0.0",
+    "http-server": "^0.11.1",
+    "jest": "^24.8.0",
     "source-map-loader": "^0.2.4",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^5.4.5",
     "typescript": "^3.4.5",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1"

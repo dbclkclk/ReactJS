@@ -1,22 +1,24 @@
 import * as React from 'react';
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
+import {Container, Row, Col } from "reactstrap";
+import Balance from "../Components/Balance";
+import Deposit from "../Components/Deposit";
+import Withdrawal from "../Components/Withdrawal";
 
 export default class DefaultPage extends React.Component{
+
       render() {
         return (
           <Container>
             <Row>
               <Col>
-              <ListGroup flush>
-                  <ListGroupItem disabled tag="a" href="#">Cras justo odio</ListGroupItem>
-                  <ListGroupItem tag="a" href="#">Dapibus ac facilisis in</ListGroupItem>
-                  <ListGroupItem tag="a" href="#">Morbi leo risus</ListGroupItem>
-                  <ListGroupItem tag="a" href="#">Porta ac consectetur ac</ListGroupItem>
-                  <ListGroupItem tag="a" href="#">Vestibulum at eros</ListGroupItem>
-                </ListGroup>
+                  <br />
+                  <Row><Col><Balance /></Col></Row>
               </Col>
               <Col>
+                <br />
+                <Row><Col><Deposit /></Col></Row>
+                <br />
+                <Row><Col><Withdrawal /></Col></Row>
               </Col>
             </Row>
           </Container>

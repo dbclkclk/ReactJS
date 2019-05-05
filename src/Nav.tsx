@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactRouterDom from 'react-router-dom';
+import DefaultCurrency from "./Components/DefaultCurrency";
 const {
   NavLink: RRLink 
 } = ReactRouterDom;
@@ -15,7 +16,7 @@ export default class Navigation extends React.Component {
     return (
       <div>
                 <Navbar color="light" light expand="md">
-                    <NavbarBrand>Hi John Doe</NavbarBrand>
+                    <NavbarBrand>Hi John Doe <DefaultCurrency /></NavbarBrand>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
                             <NavLink tag={RRLink} to="/">Home</NavLink>
