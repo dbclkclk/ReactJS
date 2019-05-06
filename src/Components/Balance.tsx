@@ -33,12 +33,12 @@ export default class Balance extends React.Component<any, BalanceStates>{
           let result : Array<CurrencyBalanceType> = await this.currencyService.balances();
           this.setState({balances: result});
           let that = this;
-          let func : Listener = () => {
-             that.getNewBalances();
+          let func : Listener = async () => {
+             await that.getNewBalances();
           }
           CurrencyStore.addChangeListener(func);
-          let func2 : Listener = () => {
-                that.setDefaultCurrency();
+          let func2 : Listener = async () => {
+                await that.setDefaultCurrency();
           }
           DefaultCurrencyType.addChangeListener(func2);
      }
@@ -46,12 +46,12 @@ export default class Balance extends React.Component<any, BalanceStates>{
      {
           //Default Currency
           let result : CurrencyType = await this.currencyService.getDefaultCurrencyType();
-          this.setState({defaultCurrency: result});
+          await this.setState({defaultCurrency: result});
      }
      async getNewBalances () 
      {
          let result : Array<CurrencyBalanceType> = await this.currencyService.balances();
-         this.setState({balances: result});
+         await this.setState({balances: result});
      }
      render() {
          let total : number = 0;
