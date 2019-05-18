@@ -7,7 +7,6 @@
 1. Enzyme
 2. Jest
 
-##How to execute the problem
 ### Requirement
 1. webpack-cli
 2. Run `npm install` from root directory
